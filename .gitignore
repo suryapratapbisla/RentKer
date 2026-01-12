@@ -1,0 +1,62 @@
+# ========================
+# Environment secrets
+# ========================
+.env
+.env.*
+!.env.example
+
+# ========================
+# Node / MERN
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# ========================
+# Build output
+# ========================
+dist/
+build/
+coverage/
+.next/
+out/
+
+# ========================
+# Uploads / DB
+# ========================
+uploads/
+*.sqlite
+*.db
+
+# ========================
+# OS / IDE junk
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ========================
+# Cache / Temp
+# ========================
+.cache/
+.parcel-cache/
+.nyc_output/
+
+# ========================
+# Docker
+# ========================
+*.tar
+
+# ========================
+# NEVER IGNORE
+# ========================
+!.gitattributes
+!.gitignore
+!docker-compose.yml
+!package.json
+!package-lock.json
+!pnpm-lock.yaml
+!yarn.lock
