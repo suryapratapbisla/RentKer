@@ -1,8 +1,10 @@
-import mongoose from "mongoose"
-
 const { Schema, model } = mongoose
 
 const vehicleSchema = new Schema({
+    owner_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Owner"
+    },
     name: {
         type: String,
         required: true,
@@ -13,21 +15,27 @@ const vehicleSchema = new Schema({
         required: true,
         trim: true,
     },
-    status: {
-        type: String,
-        required: true,
-        enum: ["Available", "Booked", "Maintenance"],
-        trim: true,
-    },
     plate_number: {
         type: String,
+        unique: true,
         required: true,
         trim: true,
     },
-    rent_price: {
+    rent_half_day: {
         type: Number,
         required: true,
         min: 0,
+    },
+    rent_per_day: {
+        type: Number,
+        required: true,
+        min: 0,
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: ["AVAILABLE", "ON_RENT", "MAINTENANCE"],
+        trim: true,
     },
     media: [
         {
@@ -37,18 +45,9 @@ const vehicleSchema = new Schema({
     type: {
         type: String,
         required: true,
-        enum: ["car", "bike", "scooter"],
+        enum: ["CAR", "BIKE", "SCOOTER"],
         trim: true,
     },
-    model: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    admin_id: {
-        type: Schema.Types.ObjectId,
-        ref: "Admin"
-    }
 
 }, { timestamps: true })
 

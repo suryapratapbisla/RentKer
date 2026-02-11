@@ -3,38 +3,29 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const paymentSchema = new Schema({
-
-    amount: {
-        type: Number,
-        require: true,
-    },
-    amount_paid: {
-        type: Number,
-        require: true,
-    },
-    status: {
-        type: String,
-        require: true,
-        enum: ["pending", "paid", "failed"],
-    },
     booking_id: { 
         type: Schema.Types.ObjectId,
         ref: 'Booking',
         require: true,
+        index: true,
     },
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+    amount: {
+        type: Number,
         require: true,
+        min: 0,
     },
-    payment_method: {
+    type: {
+        type: Number,
+        require: true,
+        enum: ["ADVANCE", "FINAL", "PENALTY"],
+    },
+    method: {
         type: String,
-        require: true,
-        enum: ["credit_card", "debit_card", "bank_transfer", "paypal"],
+        enum: ["CASH","UPI", "OTHER"],
     },
-    payment_date: {
-        type: Date,
-        require: true,
+    note: {
+      type: String,
+      trim: true,
     },
 },{ timestamps: true })
 

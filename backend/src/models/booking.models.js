@@ -4,6 +4,15 @@ const {Schema, model} = mongoose;
 
 const bookingSchema = new Schema(
   {
+    vehicle_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Vehicle",
+      require: true,
+    },
+    customer_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Customer",
+    },
     start_deadline: {
       type: Date,
       require: true,
@@ -16,27 +25,10 @@ const bookingSchema = new Schema(
       type: Number,
       require: true,
     },
-    user_name: {
-      type: String,
-      trim: true,
-    },
-    user_id: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    vehicle_id: {
-      type: Schema.Types.ObjectId,
-      ref: "Vehicle",
-      require: true,
-    },
-    payment_id: {
-      type: Schema.Types.ObjectId,
-      ref: "Payment",
-    },
     status: {
       type: String,
-      enum: ["Pending", "Confirmed", "Active", "Cancelled", "Completed"],
-      default: "Pending",
+      enum: ["CREATED","ACTIVE","CANCELLED","COMPLETED"],
+      default: "CREATED",
     },
   },
   { timestamps: true },
