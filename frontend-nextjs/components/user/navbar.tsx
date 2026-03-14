@@ -44,7 +44,7 @@ export default function UserNavbar() {
                 <div className="text-sm text-muted-foreground hidden sm:block">
                   Hello, <span className="font-semibold">{user?.name || clerkUser.firstName}</span>
                 </div>
-                <UserButton afterSignOutUrl="/" />
+                <UserButton />
               </div>
             ) : (
               <SignInButton mode="modal">
@@ -55,6 +55,6 @@ export default function UserNavbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 

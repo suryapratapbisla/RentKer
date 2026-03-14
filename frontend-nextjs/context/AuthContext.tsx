@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import axios from "axios"
 import { useUser, useClerk } from "@clerk/nextjs"
-import type { UserResource } from "@clerk/types"
+import type { UserResource } from "@clerk/shared/types"
 
 interface Profile {
   _id: string
